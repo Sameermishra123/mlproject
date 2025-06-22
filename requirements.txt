@@ -59,5 +59,3 @@ wcwidth==0.2.13
 Werkzeug==3.0.6
 xgboost==2.1.4
 zipp==3.20.2
-
--e .
