@@ -1,0 +1,15 @@
+artifact_uri: file:///c:/mlproject/notebook/mlruns/136094641671637633/6a3ac560a7c6459f8262990ce6a67ac8/artifacts
+end_time: 1750656701471
+entry_point_name: ''
+experiment_id: '136094641671637633'
+lifecycle_stage: active
+run_id: 6a3ac560a7c6459f8262990ce6a67ac8
+run_name: Random Forest Regressor
+run_uuid: 6a3ac560a7c6459f8262990ce6a67ac8
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1750656696355
+status: 3
+tags: []
+user_id: samir

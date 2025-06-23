@@ -1,0 +1,15 @@
+artifact_uri: file:///c:/mlproject/notebook/mlruns/136094641671637633/f19c3c236add4a93b1bab55da1139d2f/artifacts
+end_time: 1750656705721
+entry_point_name: ''
+experiment_id: '136094641671637633'
+lifecycle_stage: active
+run_id: f19c3c236add4a93b1bab55da1139d2f
+run_name: XGBRegressor
+run_uuid: f19c3c236add4a93b1bab55da1139d2f
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1750656701471
+status: 3
+tags: []
+user_id: samir

@@ -1,0 +1,15 @@
+artifact_uri: file:///c:/mlproject/notebook/mlruns/136094641671637633/ed7b347ddea84cfbaf18a4a28511769b/artifacts
+end_time: 1750656692069
+entry_point_name: ''
+experiment_id: '136094641671637633'
+lifecycle_stage: active
+run_id: ed7b347ddea84cfbaf18a4a28511769b
+run_name: K-Neighbors Regressor
+run_uuid: ed7b347ddea84cfbaf18a4a28511769b
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1750656687966
+status: 3
+tags: []
+user_id: samir

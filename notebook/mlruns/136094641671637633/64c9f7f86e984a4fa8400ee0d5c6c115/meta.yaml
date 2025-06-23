@@ -1,0 +1,15 @@
+artifact_uri: file:///c:/mlproject/notebook/mlruns/136094641671637633/64c9f7f86e984a4fa8400ee0d5c6c115/artifacts
+end_time: 1750656683370
+entry_point_name: ''
+experiment_id: '136094641671637633'
+lifecycle_stage: active
+run_id: 64c9f7f86e984a4fa8400ee0d5c6c115
+run_name: Lasso
+run_uuid: 64c9f7f86e984a4fa8400ee0d5c6c115
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1750656678495
+status: 3
+tags: []
+user_id: samir

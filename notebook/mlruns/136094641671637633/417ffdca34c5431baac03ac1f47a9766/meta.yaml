@@ -1,0 +1,15 @@
+artifact_uri: file:///c:/mlproject/notebook/mlruns/136094641671637633/417ffdca34c5431baac03ac1f47a9766/artifacts
+end_time: 1750656715838
+entry_point_name: ''
+experiment_id: '136094641671637633'
+lifecycle_stage: active
+run_id: 417ffdca34c5431baac03ac1f47a9766
+run_name: AdaBoost Regressor
+run_uuid: 417ffdca34c5431baac03ac1f47a9766
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1750656711631
+status: 3
+tags: []
+user_id: samir
