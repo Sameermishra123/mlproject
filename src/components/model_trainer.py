@@ -14,11 +14,13 @@ from sklearn.neighbors import KNeighborsRegressor
 from sklearn.tree import DecisionTreeRegressor
 from xgboost import XGBRegressor
 
+from sklearn.pipeline import Pipeline
+
 from src.exception import CustomException
 from src.logger import logging
-from src.utils import save_object, evaluate_models
+from src.utils import save_object, evaluate_models, load_object
 
-@dataclass 
+@dataclass
 class ModelTrainerConfig:
     trained_model_file_path = os.path.join("artifacts", "model.pkl")
 
@@ -26,7 +28,7 @@ class ModelTrainer:
     def __init__(self):
         self.model_trainer_config = ModelTrainerConfig()
 
-    def initiate_model_trainer(self, train_array, test_array):
+    def initiate_model_trainer(self, train_array, test_array, preprocessor_path):
         try:
             logging.info("Splitting training and test data")
             X_train, y_train, X_test, y_test = (
@@ -48,12 +50,8 @@ class ModelTrainer:
             }
 
             params = {
-                "Decision Tree": {
-                    'max_depth': [3, 5, 10],
-                },
-                "Random Forest": {
-                    'n_estimators': [8, 16, 32, 64, 128, 256]
-                },
+                "Decision Tree": {'max_depth': [3, 5, 10]},
+                "Random Forest": {'n_estimators': [8, 16, 32, 64, 128, 256]},
                 "KNN": {
                     'n_neighbors': [3, 5, 7, 9, 11],
                     'weights': ['uniform', 'distance'],
@@ -83,30 +81,44 @@ class ModelTrainer:
             model_report: dict = evaluate_models(
                 X_train=X_train,
                 y_train=y_train,
-                X_text=X_test,
+                X_test=X_test,
                 y_test=y_test,
                 models=models,
                 param=params
             )
 
-            # Get the best model score from the dictionary
             best_model_score = max(model_report.values())
-
-            # Get the best model name from the dictionary
             best_model_name = max(model_report, key=model_report.get)
             best_model = models[best_model_name]
 
             if best_model_score < 0.6:
                 raise CustomException("No best model found with score >= 0.6")
+
             logging.info(f"Best model found: {best_model_name} with R2 score: {best_model_score}")
 
+            # Load preprocessor
+            preprocessor = load_object(preprocessor_path)
+
+            # Create full pipeline
+            full_pipeline = Pipeline([
+                ("preprocessor", preprocessor),
+                ("model", best_model)
+            ])
+
+            # Fit pipeline on raw training data
+            full_pipeline.fit(X_train, y_train)
+
+            # Save full pipeline
             save_object(
                 file_path=self.model_trainer_config.trained_model_file_path,
-                obj=best_model,
+                obj=full_pipeline,
             )
 
-            prediction = best_model.predict(X_test)
+            prediction = full_pipeline.predict(X_test)
             r2_score_test = r2_score(y_test, prediction)
+
+            logging.info(f"Test R2 score: {r2_score_test}")
+
             return r2_score_test
 
         except Exception as e:

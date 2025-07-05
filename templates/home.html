@@ -120,9 +120,11 @@
         </div>
     </form>
 
-    <h2 class="mt-4 text-center">
-        THE PREDICTION IS: {{ results }}
-    </h2>
+    {% if results %}
+        <h2 class="mt-4 text-center">
+            THE PREDICTION IS: {{ results }}
+        </h2>
+    {% endif %}
     </div>
 
     <!-- Add Bootstrap JS (optional, for dropdown functionality, etc.) -->
