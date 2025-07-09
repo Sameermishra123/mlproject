@@ -45,5 +45,5 @@ def predict_datapoint():
             print("Error during prediction:", e)
             return render_template('home.html', results="Error in prediction. Please check your inputs.")
 
-if __name__ == "__main__":
-    application.run(host="0.0.0.0", debug=True, port=5000)
+#if __name__ == "__main__":
+ #   application.run(host="0.0.0.0", debug=True, port=5000)
